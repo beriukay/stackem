@@ -1,22 +1,30 @@
 /* Paul Gentemann
  * CS 411
  * File Name : stackem.cpp
- * Last Modified : Wed 19 Feb 2014 07:31:28 PM AKST
+ * Last Modified : Thu 20 Feb 2014 02:19:42 AM AKST
  * Description : Dynamic Programming version of stackem. Original code from
  * Erik Talvi's HW2, because it was faster than mine, and because I didn't 
  * really want to rework the bitmask stuff from my HW2.
  */
 
+#include <future>   // for asynch
 #include "stackem.h"
 
 // Returns height of maximum stack.
-int stackEm(const Tower & test)
+int stackEm(const Tower & value)
+{
+    auto result = std::async(std::launch::async, stackEmHelper, value);
+    return result.get();
+
+}
+int stackEmHelper(const Tower & test)
 {
     // Handle trivial cases in one line.
     if (test.size() == 1) return test[0][4];
 
     Tower testCopy(test);
-    std::sort(testCopy.begin(), testCopy.end(), baseComp); 
+    std::sort(testCopy.begin(), testCopy.end(), [](const Block a, const Block b)
+	    { return a[0] < b[0]; }); 
 
     // Make a stackability matrix, where (b_i,b_j) = true if j stacks on i
     vector<Matrix> stackables (testCopy.size());
@@ -79,7 +87,3 @@ bool canStack(const Block & top, const Block & bot)
 }
 
 
-// baseComp()
-// Compare the bottoms of the two pieces, for sorting.
-bool baseComp(const Block & lhs,const  Block & rhs)
-{ return (lhs[0] < rhs[0]); }
