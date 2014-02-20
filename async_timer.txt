@@ -1,0 +1,43 @@
+TEST SUITES FOR FUNCION stackEm
+Test Suite: function stackEm - small examples
+0.063613 ms
+0.023713 ms
+0.018953 ms
+0.018688 ms
+0.017254 ms
+0.016869 ms
+0.018308 ms
+0.016216 ms
+0.015482 ms
+0.017465 ms
+0.017159 ms
+0.017795 ms
+0.017283 ms
+0.016894 ms
+0.016217 ms
+0.015535 ms
+0.018222 ms
+0.01823 ms
+0.018512 ms
+0.01797 ms
+0.017241 ms
+0.019236 ms
+0.017016 ms
+0.017217 ms
+0.018365 ms
+Test Suite: function stackEm - medium examples
+0.023712 ms
+0.02485 ms
+0.027356 ms
+0.036309 ms
+0.051345 ms
+0.063294 ms
+0.036101 ms
+Test Suite: function stackEm - large examples
+0.999713 ms
+1.77315 ms
+0.375025 ms
+0.165477 ms
+1.9215 ms
+All tests successful
+Press ENTER to quit 
