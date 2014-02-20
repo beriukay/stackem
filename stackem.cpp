@@ -1,7 +1,7 @@
 /* Paul Gentemann
  * CS 411
  * File Name : stackem.cpp
- * Last Modified : Thu 20 Feb 2014 02:45:46 AM AKST
+ * Last Modified : Thu 20 Feb 2014 03:08:06 AM AKST
  * Description : Dynamic Programming version of stackem. Original code from
  * Erik Talvi's HW2, because it was faster than mine, and because I didn't 
  * really want to rework the bitmask stuff from my HW2.
@@ -16,14 +16,18 @@ using std::cout; using std::endl;
 // Returns height of maximum stack.
 int stackEm(const Tower & value)
 {
-    auto start = chrono::steady_clock::now();
+    auto start = std::chrono::steady_clock::now();
+
     auto result = std::async(std::launch::async, stackEmHelper, value);
-    auto end = chrono::steady_clock::now();
-    cout << chrono::duration<double,milli> (diff).count() << " ms" << endl;
+
+    auto end = std::chrono::steady_clock::now();
+    auto diff = end - start;
+    cout << std::chrono::duration <double, std::milli> (diff).count() << " ms" << endl;
 
     return result.get();
 
 }
+
 int stackEmHelper(const Tower & test)
 {
     // Handle trivial cases in one line.
